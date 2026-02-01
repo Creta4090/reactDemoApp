@@ -1,31 +1,29 @@
 import React, { useState } from 'react'; 
+import ProbsDetails from '../components/probs'
+ 
+ function About() {
+ 
+ // 1. Define the state in the parent component
+ const [dataFromChild, setDataFromChild] = useState('');
 
-const About = () => {
-  const [inputValue, setInputValue] = useState(''); 
-  // State to store current input value
+ const [lastNameField, setLastName] = useState('');
 
-  const handleChange = (e) => {
-    setInputValue(e.target.value); 
-    // Update inputValue state on every input change
+  // 2. Define a callback function to receive data from the child
+  const handleChildData = (childData) => {
+    setDataFromChild(childData);
   };
 
-  const handleClick = () => {
-   alert("Data from form " + inputValue);
+  const handleLastName = (lastname) => {
+    setLastName(lastname);
   }
-
+  
   return (
     <>
       <h1>About Us</h1>
-      <input 
-        type="text" 
-        value={inputValue} 
-        onChange={handleChange}
-        placeholder="Type something here" 
-      />
-      <button className='primary-btn' onClick={handleClick} >Submit</button>
-      {/* Input box with onChange handler */}
-      <p>{inputValue}</p> 
-      {/* Display the typed input live below the input box */}
+      <h2>Parent Component</h2>
+      <p>Data received from child: <strong>{dataFromChild}</strong> <strong>{lastNameField}</strong></p>
+      {/* 3. Pass the callback function as a prop to the child */}
+      <ProbsDetails firstName={handleChildData} lastname={handleLastName} />
     </>
   );
 };

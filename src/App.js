@@ -8,6 +8,7 @@ import Home from './lowComponent/home';
 import About from './components/about';
 import Contact from "./components/contact";
 import Data from "./components/data";
+import ProbsDetails from "./components/probs";
 function App() {
     return (
         <Router>
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/data" element={<Data />} />
+                <Route path="/props" element={<ProbsDetails />} />
                 <Route path="/Contact" element={<Contact/>}/>
             </Routes>
             </div>
